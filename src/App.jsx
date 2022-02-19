@@ -61,8 +61,10 @@ export default function App() {
     }
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     checkIfWalletIsConnected();
+    await getTotalWaves();
+    await getAllWaves();
   }, []);
 
   const wave = async () => {
@@ -195,44 +197,4 @@ export default function App() {
         })}
       </Stack>
   );
-
-  // return (
-  //   <div className="mainContainer">
-  //
-  //     <div className="dataContainer">
-  //       <Typography variant='h2'>
-  //         👋 Hey there, Edu here!
-  //       </Typography>
-  //
-  //       <div className="bio">
-  //       I am a Software Engineer. Jack of all trades, master of none
-  //       </div>
-  //
-  //       {
-  //         currentAccount ? <p className="bio"> {
-  //           mining ? "Mining..." : `Total waves ${totalWaves}`} </p> : <></>
-  //       }
-  //
-  //       <input type="text" value={msg} onChange={(e) => handleChange(e)}/>
-  //
-  //       <button className="waveButton" onClick={wave}>
-  //         Wave at Me
-  //       </button>
-  //       {!currentAccount && (
-  //         <button className="waveButton" onClick={connectWallet}>
-  //           Connect Wallet
-  //         </button>
-  //       )}
-  //
-  //       {allWaves.map((wave, index) => {
-  //         return (
-  //           <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
-  //             <div>Address: {wave.address}</div>
-  //             <div>Time: {wave.timestamp.toString()}</div>
-  //             <div>Message: {wave.message}</div>
-  //           </div>)
-  //       })}
-  //     </div>
-  //   </div>
-  // );
 }
